@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blue-green-v2
+  labels:
+    app: blue-green-app
+spec:
+  # strategy:
+  #   rollingUpdate:
+  #     maxSurge: 2
+  #     maxUnavailable: 0
+  #   type: RollingUpdate
+  replicas: 1
+  selector:
+    matchLabels:
+      app: blue-green-app
+  template:
+    metadata:
+      labels:
+        app: blue-green-app
+        version: v2
+    spec:
+      containers:
+      - name: blue-green-app
+        image: janakiramm/myapp:v2
+        ports:
+        - containerPort: 80
