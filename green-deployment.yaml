@@ -5,11 +5,11 @@ metadata:
   labels:
     app: blue-green-app
 spec:
-  # strategy:
-  #   rollingUpdate:
-  #     maxSurge: 2
-  #     maxUnavailable: 0
-  #   type: RollingUpdate
+  strategy:
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 0
+    type: RollingUpdate
   replicas: 1
   selector:
     matchLabels:
